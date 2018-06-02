@@ -1,0 +1,14 @@
+version: '2'
+ 
+services:
+  elasticsearch:
+    image: elasticsearch:5.5
+    ports:
+      - "9200:9200"
+  app:
+    build: ./app
+    restart: always
+    ports:
+      - "80:80"
+    environment:
+      ESHOST: elasticsearch
